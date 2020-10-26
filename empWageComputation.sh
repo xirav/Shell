@@ -9,6 +9,7 @@ then
 
 EMPLOYEE_RATE_PER_HOUR=20
 FULL_TIME=8
+PART_TIME=4
 MAX_NO_OF_DAYS=2
 MAX_NO_OF_HOURS=120
 
@@ -22,12 +23,21 @@ workDonePerDay=0
 while [[ $totalWorkingDays -lt $MAX_NO_OF_DAYS && $total_working_hours -lt $MAX_NO_OF_HOURS ]]
 do
 	((totalWorkingDays++));
-	tempWage=$((FULL_TIME*EMPLOYEE_RATE_PER_HOUR));
+	if [ $((RANDOM%2)) -eq 0 ]
+	then
+		workDonePerDay=$PART_TIME
+	else
+		workDonePerDay=$FULL_TIME
+	fi
+	
+	total_working_hours=$((total_working_hours+workDonePerDay));
+	tempWage=$((workDonePerDay*EMPLOYEE_RATE_PER_HOUR));
 	totalWage=$((tempWage+totalWage));
 done
 
 echo "total wage" $totalWage
 echo "total Days Worked" $totalWorkingDays
+echo "total hours done" $total_working_hours
 
 
 else
