@@ -1,5 +1,7 @@
 #!/bin/bash -x
 #this
+
+
 attendance=$(($RANDOM%2))
 
 if [[ $attendance -eq 1 ]]
@@ -42,6 +44,14 @@ do
 	totalWage=$((tempWage+totalWage));
 
 	dayWiseWageStorage[((totalWorkingDays))]=$tempWage
+	tot=0
+	for i in ${dayWiseWageStorage[@]}
+	do
+		let tot+=$i
+	done
+	
+	
+
 done
 
 echo "total wage" $totalWage
@@ -49,6 +59,8 @@ echo "total Days Worked" $totalWorkingDays
 echo "total hours done" $total_working_hours
 
 echo "Wage per day = " ${dayWiseWageStorage[@]}
+echo "DAY " ${!dayWiseWageStorage[@]}
+echo "totalWage" $tot
 
 else
         echo "The Employee is Absent"
