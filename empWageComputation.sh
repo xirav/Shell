@@ -40,12 +40,15 @@ do
 	total_working_hours=$((total_working_hours+workDonePerDay));
 	tempWage=$((workDonePerDay*EMPLOYEE_RATE_PER_HOUR));
 	totalWage=$((tempWage+totalWage));
+
+	dayWiseWageStorage[((totalWorkingDays))]=$tempWage
 done
 
 echo "total wage" $totalWage
 echo "total Days Worked" $totalWorkingDays
 echo "total hours done" $total_working_hours
 
+echo "Wage per day = " ${dayWiseWageStorage[@]}
 
 else
         echo "The Employee is Absent"
