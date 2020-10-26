@@ -1,5 +1,5 @@
 #!/bin/bash -x
-
+#this
 attendance=$(($RANDOM%2))
 
 if [[ $attendance -eq 1 ]]
